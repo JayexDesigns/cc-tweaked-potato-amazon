@@ -4,7 +4,7 @@ PotatoQuantity = 0
 Chest = peripheral.find("minecraft:chest")
 rednet.open("right")
 
-while (true) do
+while true do
     PotatoQuantity = 0
     local items = Chest.list()
     for slot, item in pairs(items) do

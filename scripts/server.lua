@@ -15,7 +15,7 @@ Protocols = {
 }
 
 
-while (true) do
+while true do
     local id, message, protocol = rednet.receive()
     Protocols[protocol](id, message)
 end

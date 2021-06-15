@@ -97,7 +97,7 @@ function Harvest()
 end
 
 function HarvestRow()
-    while(true) do
+    while true do
         Harvest()
         turtle.turnLeft()
         if (turtle.detect()) then
@@ -116,7 +116,7 @@ end
 
 
 function WaitForGrowth()
-    while(not CheckGrowth()) do
+    while not CheckGrowth() do
         sleep(5)
     end
 end
@@ -127,7 +127,7 @@ end
 
 print('Beginning Harvest...')
 
-while(true) do
+while true do
     if (not CheckFuel()) then
         if (not NoFuel) then
             print("There is no fuel, I can't continue")

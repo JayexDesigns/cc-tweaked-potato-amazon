@@ -4,16 +4,18 @@ rednet.open("left")
 
 
 
-function potatoQuantity(potatoes)
+function PotatoQuantity(id, potatoes)
     TotalPotatoes = potatoes
     print("Total potatoes updated: ".. TotalPotatoes)
 end
 
 
+Protocols = {
+    ["potatoQuantity"] = PotatoQuantity
+}
+
+
 while (true) do
     local id, message, protocol = rednet.receive()
-    if (protocol == "potatoQuantity") then
-        TotalPotatoes = message
-        print("Total potatoes updated: ".. TotalPotatoes)
-    end
+    Protocols[protocol](id, message)
 end

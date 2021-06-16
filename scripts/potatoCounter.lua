@@ -1,4 +1,5 @@
-ServerId = 14
+args = {...}
+ServerId = tonumber(args[1])
 PreviousPotatoQuantity = 0
 PotatoQuantity = 0
 Chest = peripheral.find("minecraft:chest")

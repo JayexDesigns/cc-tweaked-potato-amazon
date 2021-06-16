@@ -11,5 +11,7 @@ while true do
 
         turtle.suckUp(message % 64)
         turtle.dropDown()
+
+        rednet.send(id, "done")
     end
 end

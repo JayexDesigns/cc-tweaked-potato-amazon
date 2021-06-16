@@ -37,6 +37,7 @@ while true do
 
         if potatoes ~= 0 then
             rednet.send(ReceiverId, potatoes, "givePotatoes")
+            local id, message = rednet.receive()
         end
     end
 end

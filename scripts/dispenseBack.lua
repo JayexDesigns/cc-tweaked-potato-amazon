@@ -5,6 +5,8 @@ function SuckUp(quantity)
         if turtle.suckUp(quantity) then
             return
         end
+        print("Ran out of potatoes waiting...")
+        sleep(5)
     end
 end
 
@@ -13,11 +15,11 @@ while true do
     if protocol == "givePotatoes" then
         print("Giving away ".. message.. " potatoes")
         for i = 1, math.floor(message / 64) do
-            turtle.suckUp(64)
+            SuckUp(64)
             turtle.dropDown()
         end
 
-        turtle.suckUp(message % 64)
+        SuckUp(message % 64)
         turtle.dropDown()
 
         rednet.send(id, "done")

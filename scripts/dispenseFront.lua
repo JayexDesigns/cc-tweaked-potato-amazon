@@ -38,6 +38,7 @@ while true do
                 end
             end
         end
+        turtle.select(1)
 
         if potatoes ~= 0 then
             rednet.send(ReceiverId, potatoes, "givePotatoes")

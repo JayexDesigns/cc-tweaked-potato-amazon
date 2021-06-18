@@ -8,11 +8,12 @@ rednet.open("right")
 function SuckUp(quantity)
     while true do
         if turtle.suckUp(quantity) then
-            if turtle.getItemCount() == quantity then
-                turtle.dropDown()
+            local grabbedPotatoes = turtle.getItemCount()
+            turtle.dropDown()
+            if grabbedPotatoes == quantity then
                 return
             else
-                quantity = quantity - turtle.getItemCount()
+                quantity = quantity - grabbedPotatoes
             end
         end
         print("Ran out of potatoes waiting...")

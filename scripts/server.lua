@@ -9,9 +9,14 @@ function PotatoQuantity(id, potatoes)
     print("Total potatoes updated: ".. TotalPotatoes)
 end
 
+function GivePotatoes(id, potatoes)
+    print("Vending machine giving away ".. potatoes.. " potatoes")
+end
+
 
 Protocols = {
-    ["potatoQuantity"] = PotatoQuantity
+    ["potatoQuantity"] = PotatoQuantity,
+    ["givePotatoes"] = GivePotatoes
 }
 
 

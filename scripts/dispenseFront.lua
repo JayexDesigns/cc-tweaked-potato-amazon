@@ -1,13 +1,17 @@
 args = {...}
+if not args[1] then
+    error("Set the id of the receiver")
+end
 ReceiverId = tonumber(args[1])
 SLOT_COUNT = 16
 
 rednet.open("right")
 
 Prices = {
-    ["minecraft:coal"] = 1,
-    ["minecraft:iron_ingot"] = 2,
-    ["minecraft:diamond"] = 8
+    ["minecraft:iron_ingot"] = 1,
+    ["minecraft:iron_block"] = 10,
+    ["minecraft:diamond"] = 14,
+    ["minecraft:netherite_scrap"] = 144
 }
 
 while true do

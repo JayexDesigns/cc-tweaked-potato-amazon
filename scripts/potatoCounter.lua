@@ -1,4 +1,7 @@
 args = {...}
+if not args[1] then
+    error("Set the id of the server")
+end
 ServerId = tonumber(args[1])
 PreviousPotatoQuantity = 0
 PotatoQuantity = 0

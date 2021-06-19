@@ -6,11 +6,11 @@ rednet.open("left")
 
 function PotatoQuantity(id, potatoes)
     TotalPotatoes = potatoes
-    print("Total potatoes updated: ".. TotalPotatoes)
+    print("Total potatoes updated: " .. TotalPotatoes)
 end
 
 function GivePotatoes(id, potatoes)
-    print("Vending machine giving away ".. potatoes.. " potatoes")
+    print("Vending machine giving away " .. potatoes .. " potatoes")
 end
 
 

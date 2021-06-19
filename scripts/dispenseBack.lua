@@ -25,7 +25,7 @@ while true do
     local id, message, protocol = rednet.receive()
     if protocol == "givePotatoes" then
         rednet.send(ServerId, message, "givePotatoes")
-        print("Giving away ".. message.. " potatoes")
+        print("Giving away " .. message .. " potatoes")
         for i = 1, math.floor(message / 64) do
             SuckUp(64)
         end

@@ -146,6 +146,69 @@ function GivePotatoes(id, potatoes)
 end
 
 
+Clients = {}
+
+function ClientLogin(id, data)
+    local username, password
+    for u, p in string.gmatch(data, "(%w+)%s(%w+)") do
+        username = u
+        password = p
+    end
+    if Login(username, password) then
+        Clients[tostring(id)] = {
+            ["username"] = username,
+            ["password"] = password
+        }
+    end
+end
+
+function ClientLocation(id, location)
+    local function stringSplit(input, sep)
+        if sep == nil then
+            sep = "%s"
+        end
+        local t={}
+        for str in string.gmatch(input, "([^"..sep.."]+)") do
+            table.insert(t, str)
+        end
+        return t
+    end
+
+    location = stringSplit(location)
+    if Clients[tostring(id)] then
+        Clients[tostring(id)]["x"] = location[1]
+        Clients[tostring(id)]["y"] = location[2]
+        Clients[tostring(id)]["z"] = location[3]
+    end
+end
+
+function RequestPotatoes(id, quantity)
+    quantity = tonumber(quantity)
+    local client = Clients[tostring(id)]
+    if client and client["username"] and client["password"] and client["x"] and client["y"] and client["z"] and quantity then
+        local balance = GetBalance(client["username"])
+        if tonumber(balance) >= quantity then
+            ChangeBalance(client["username"], balance - quantity)
+        else
+            return false
+        end
+        if DeployerId then
+            rednet.send(DeployerId, client["x"] .. " " .. client["y"] .. " " .. client["z"] .. " " .. quantity, "deploy")
+            print("Sending " .. quantity .. " potatoes to " .. client["username"] .. " in " .. client["x"] .. " " .. client["y"] .. " " .. client["z"])
+        end
+    end
+end
+
+
+
+DeployerId = nil
+
+function DeployerPing(id, message)
+    DeployerId = tonumber(id)
+end
+
+
+
 Protocols = {
     ["registerRequest"] = RegisterRequest,
     ["loginRequest"] = LoginRequest,
@@ -153,7 +216,11 @@ Protocols = {
     ["addBalance"] = AddBalance,
     ["substractBalance"] = SubstractBalance,
     ["potatoQuantity"] = PotatoQuantity,
-    ["givePotatoes"] = GivePotatoes
+    ["givePotatoes"] = GivePotatoes,
+    ["clientLogin"] = ClientLogin,
+    ["clientLocation"] = ClientLocation,
+    ["requestPotatoes"] = RequestPotatoes,
+    ["deployerPing"] = DeployerPing
 }
 
 

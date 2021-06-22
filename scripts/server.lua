@@ -193,7 +193,7 @@ function RequestPotatoes(id, quantity)
             return false
         end
         if DeployerId then
-            rednet.send(DeployerId, client["x"] .. " " .. client["y"] .. " " .. client["z"] .. " " .. quantity, "deploy")
+            rednet.send(DeployerId, tostring(client["x"]) .. " " .. tostring(client["y"]) .. " " .. tostring(client["z"]) .. " " .. tostring(quantity), "deploy")
             print("Sending " .. quantity .. " potatoes to " .. client["username"] .. " in " .. client["x"] .. " " .. client["y"] .. " " .. client["z"])
         end
     end

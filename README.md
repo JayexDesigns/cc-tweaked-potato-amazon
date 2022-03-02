@@ -90,11 +90,4 @@
 <p>The deployer is a mining turtle with a modem that has in its storage more turtles with modems and coal, it's code is <a href="./scripts/deployer.lua">deployer.lua</a> and takes only one argument, the server's id. When it receives a petition from the server it will place a turtle and give it coal, after that, it will turn the turtle on and get its id so it can send the delivery information. The drone functions because there is a disk drive with a startup file in it next to the place where the drones are deployed. The startup code should look like this:<pre><code>edit startup<br/>shell.run("deployer", "(ServerId)")</code></pre></p>
 <br/>
 <h3>Drone</h3>
-<p>The drone will deploy as soon as the deployer places it on the ground, the code of the drone is <a href="./scripts/drone.lua">drone.lua</a> and it must be stored in a disk drive with the name "startup.lua". When the drone starts it will go up to grab the requested potatoes after that it will leave the facility and fly up to the delivery height, then it will calculate the route to the delivery location, go down to the ground and throw the potatoes. After that, it will go to the return height to minimize collisions and return to the facility where the deployer will break it and store it again</p>
-<br/>
-<video width="100%" autoplay loop>
-<source src="./assets/client.mp4">
-</video>
-<video width="100%" autoplay loop>
-<source src="./assets/deploy.mp4">
-</video>
+<p>The drone will deploy as soon as the deployer places it on the ground, the code of the drone is <a href="./scripts/drone.lua">drone.lua</a> and it must be stored in a disk drive with the name "startup.lua". When the drone starts it will go up to grab the requested potatoes after that it will leave the facility and fly up to the delivery height, then it will calculate the route to the delivery location, go down to the ground and throw the potatoes. After that, it will go to the return height to minimize collisions and return to the facility where the deployer will break it and store it again.</p>
